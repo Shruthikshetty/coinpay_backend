@@ -1,2 +1,17 @@
 ### purpose-options
 GET http://localhost:3000/api/purpose-options
+
+
+### add purpose-option
+POST http://localhost:3000/api/purpose-options
+Content-Type: application/json
+
+{
+  "key":"emi_payment",
+  "title":"Emi",
+  "subtitle":"Pay your emis",
+  "image":"receipt_icon"
+}
+
+### delete purpose-option by id
+DELETE http://localhost:3000/api/purpose-options/68178dc320ff15baa0013b42
