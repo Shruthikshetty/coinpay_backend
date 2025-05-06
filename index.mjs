@@ -29,5 +29,5 @@ app.get("/", (req, res) => {
 
 // listen to the the given port
 app.listen(process.env.PORT, () => {
-  console.log("express app running");
+  console.log("express app running on port " + process.env.PORT);
 });
