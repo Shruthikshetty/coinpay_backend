@@ -1,4 +1,4 @@
-### purpose-options
+### get all purpose-options
 GET http://localhost:3000/api/purpose-options
 
 
@@ -7,11 +7,233 @@ POST http://localhost:3000/api/purpose-options
 Content-Type: application/json
 
 {
-  "key":"emi_payment",
-  "title":"Emi",
-  "subtitle":"Pay your emis",
+  "key":"bill_pay",
+  "title":"Electricity",
+  "subtitle":"Pay to you'r electric bill",
   "image":"receipt_icon"
 }
 
 ### delete purpose-option by id
 DELETE http://localhost:3000/api/purpose-options/68178dc320ff15baa0013b42
+
+
+
+### add customer 
+POST http://localhost:3000/api/customer
+Content-Type: application/json
+
+{
+  "phoneNumber": "9876543210",
+  "name": "Rohan Sharma",
+  "userName": "rohan_s",
+  "email": "rohan.sharma@example.com",
+  "panNumber": "PQRS56",
+  "address": "221B Baker Street, Mumbai, Maharashtra",
+  "city": "Mumbai",
+  "country": "India",
+  "dob": "1988-11-22T00:00:00.000Z",
+  "pinCode": "400001",
+  "profileImage": ""
+}
+
+
+### get all customer
+GET http://localhost:3000/api/customer
+
+### get customer by id
+GET http://localhost:3000/api/customer/CUST123463
+
+### update customer profile image
+PUT http://localhost:3000/api/customer/profileimage
+Content-Type: application/json
+
+{
+  "customerId": "CUST123463",
+  "profileImage": "https://cdn.pixabay.com/photo/2016/05/13/12/20/face-1389833_1280.jpg"
+}
+
+### add auth to customer 
+POST http://localhost:3000/api/auth/add
+Content-Type: application/json
+
+{
+  "customerRefId": "681da127828b24fe55801158",
+  "password": "anjaliking"
+}
+
+### update auth of customer 
+PATCH  http://localhost:3000/api/auth
+Content-Type: application/json
+
+{
+  "customerRefId": "681da127828b24fe55801158",
+  "pin":"1234"
+}
+
+### validate PIN 
+POST http://localhost:3000/api/auth/validate/pin
+Content-Type: application/json
+
+{
+  "customerRefId": "681da127828b24fe55801158",
+  "pin":"1234"
+}
+
+
+### validate Password
+POST http://localhost:3000/api/auth/validate/password
+Content-Type: application/json
+
+{
+  "customerRefId": "681da127828b24fe55801158",
+  "password":"anjaliking"
+}
+
+
+### get all countries 
+GET http://localhost:3000/api/country
+
+### add a new Country 
+POST http://localhost:3000/api/country
+Content-Type: application/json
+
+{
+  "country": "Australia",
+  "code": "AU",
+  "phoneCode": "+61"
+}
+
+### get all cities 
+GET http://localhost:3000/api/city
+
+### add city to a country 
+POST http://localhost:3000/api/city
+Content-Type: application/json
+
+{
+  "city": "San Francisco",
+  "cityCode": "SFO",
+  "countryRefId": "681e17504482711383337a50"
+}
+
+### get city by country
+GET http://localhost:3000/api/city/country/681e17504482711383337a50
+
+
+### all accounts for a user 
+POST  http://localhost:3000/api/account
+Content-Type: application/json
+
+{
+  "customerRefId": "681da127828b24fe55801158"
+}
+
+### add account to a customer
+POST http://localhost:3000/api/account/add
+Content-Type: application/json
+
+{
+  "customerRefId": "681da127828b24fe55801158" ,
+  "accountType":"Fixed",
+  "balance":20000
+}
+
+### delete a account 
+POST http://localhost:3000/api/account/delete
+Content-Type: application/json
+
+{
+ "accountRefId" : "6820350bfa92453c576997e2"
+}
+
+### update balance for a account 
+PATCH http://localhost:3000/api/account/balance
+Content-Type: application/json
+
+{
+  "accountRefId": "681ee1161d2519cedc4eb620" ,
+  "balance":40000
+}
+
+### get cards belonging to a customer account
+POST http://localhost:3000/api/card
+Content-Type: application/json
+
+{
+ "accountRefId" : "6820350bfa92453c576997e2"
+}
+
+### add a card to a customer account
+POST http://localhost:3000/api/card/add
+Content-Type: application/json
+
+{
+ "accountRefId" : "6820350bfa92453c576997e2",
+ "cardType" : "mastercard"
+}
+
+### delete a card from a customer by id
+
+DELETE http://localhost:3000/api/card
+Content-Type: application/json
+
+{
+ "cardRefId" : "681f5afc7d9fde76864f0ca3"
+}
+
+### get messages for a customer 
+POST  http://localhost:3000/api/message/get
+Content-Type: application/json
+
+{
+  "customerRefId": "681da127828b24fe55801158",
+  "start" : 2 ,
+  "limit" : 2
+}
+
+
+### send messages for a customer 
+POST  http://localhost:3000/api/message/add
+Content-Type: application/json
+
+{
+  "customerRefId": "681da127828b24fe55801158",
+  "message": "maybe help our for real ??"
+}
+
+### get transactions 
+POST  http://localhost:3000/api/transaction/get
+Content-Type: application/json
+
+{
+  "accountRefId" : "681f88eeed073e4687dd6864"
+}
+
+### send a amount from one acc to another 
+POST  http://localhost:3000/api/transaction/send
+Content-Type: application/json
+
+{
+  "fromAccountNumber" : "00000016539650",
+  "toAccountNumber": "00000016539654",
+  "amount":10,
+  "notes":"test 10",
+  "category":"spending_pay"
+}
+
+### send otp to phone number
+POST  http://localhost:3000/api/otp/send
+Content-Type: application/json
+
+{
+  "phoneNumber":"7259648996"
+}
+
+### verify the otp
+POST  http://localhost:3000/api/otp/verify
+Content-Type: application/json
+
+{
+  "phoneNumber":"7259648996",
+  "otp":"870404"
+}
