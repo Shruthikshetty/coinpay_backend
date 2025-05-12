@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 // PurposeOptions schema for the purpose options collection in the database
 const purposeOptionsSchema = new Schema(
@@ -24,4 +24,5 @@ const purposeOptionsSchema = new Schema(
 );
 
 // Create the PurposeOptions model using the purposeOptionsSchema
-export const PurposeOption = model("PurposeOption", purposeOptionsSchema);
+// Use existing model if it exists to prevent OverwriteModelError
+export const PurposeOption = model('PurposeOption', purposeOptionsSchema);
