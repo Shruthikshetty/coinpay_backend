@@ -71,3 +71,57 @@ export const updateCustomerProfileImage = async (req, res) => {
     handle500Error(res, error);
   }
 };
+
+//this endpoint is used to update customer profile partially
+export const updateCustomerDetails = async (req, res) => {
+  const { customerId, name, email, addres, country, city, pinCode, dob } =
+    req.validatedData;
+  try {
+    // get customerId from the request body
+    // find customer by customerId
+    const customer = await Customer.findOne({ customerId });
+    if (!customer) {
+      return res.status(404).json({ message: 'Customer not found' });
+    }
+    // update customer
+    const updatedCustomer = await Customer.findOneAndUpdate(
+      { customerId },
+      {
+        name: name ?? customer.name,
+        email: email ?? customer.email,
+        addres: addres ?? customer.addres,
+        country: country ?? customer.country,
+        city: city ?? customer.city,
+        pinCode: pinCode ?? customer.pinCode,
+        dob: dob ?? customer.dob,
+      },
+      { new: true }
+    );
+    // send the updated customer data
+    res.status(200).json(updatedCustomer);
+  } catch (error) {
+    handle500Error(res, error);
+  }
+};
+
+//this is used to update phone number
+export const updateCustomerPhoneNumber = async (req, res) => {
+  const { customerId, phoneNumber } = req.validatedData;
+  try {
+    // find customer by customerId
+    const customer = await Customer.findOne({ customerId });
+    if (!customer) {
+      return res.status(404).json({ message: 'Customer not found' });
+    }
+    // update customer
+    const updatedCustomer = await Customer.findOneAndUpdate(
+      { customerId },
+      { phoneNumber },
+      { new: true }
+    );
+    // send the updated customer data
+    res.status(200).json(updatedCustomer);
+  } catch (error) {
+    handle500Error(res, error);
+  }
+};

@@ -1,3 +1,6 @@
+# backend for Coinpay 
+  this contains all the apis used in the coinpay demo app
+
 ## ✅ ESLint Setup
 
 This project uses [ESLint](https://eslint.org/) with the modern **Flat Config** style and `@eslint/js` for linting JavaScript code in a Node.js environment.

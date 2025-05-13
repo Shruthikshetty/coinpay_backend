@@ -41,7 +41,7 @@ Content-Type: application/json
 GET http://localhost:3000/api/customer
 
 ### get customer by id
-GET http://localhost:3000/api/customer/CUST123463
+GET http://localhost:3000/api/customer/CUST123460
 
 ### update customer profile image
 PUT http://localhost:3000/api/customer/profileimage
@@ -50,6 +50,24 @@ Content-Type: application/json
 {
   "customerId": "CUST123463",
   "profileImage": "https://cdn.pixabay.com/photo/2016/05/13/12/20/face-1389833_1280.jpg"
+}
+
+### update customer details
+PATCH http://localhost:3000/api/customer/details
+Content-Type: application/json
+
+{
+  "customerId": "CUST123460",
+  "email":"mona@gmail.com"
+}
+
+### update customer phone number
+PUT http://localhost:3000/api/customer/phone-number
+Content-Type: application/json
+
+{
+  "customerId": "CUST123460",
+  "phoneNumber":"9859448896"
 }
 
 ### add auth to customer 
@@ -134,7 +152,7 @@ Content-Type: application/json
 
 {
   "customerRefId": "681da127828b24fe55801158" ,
-  "accountType":"Fixed",
+  "accountType":"Current",
   "balance":20000
 }
 
@@ -152,7 +170,7 @@ Content-Type: application/json
 
 {
   "accountRefId": "681ee1161d2519cedc4eb620" ,
-  "balance":40000
+  "balance":40600
 }
 
 ### get cards belonging to a customer account
@@ -160,7 +178,7 @@ POST http://localhost:3000/api/card
 Content-Type: application/json
 
 {
- "accountRefId" : "6820350bfa92453c576997e2"
+ "accountRefId" : "681ee1161d2519cedc4eb620"
 }
 
 ### add a card to a customer account
@@ -168,7 +186,7 @@ POST http://localhost:3000/api/card/add
 Content-Type: application/json
 
 {
- "accountRefId" : "6820350bfa92453c576997e2",
+ "accountRefId" : "681ee1161d2519cedc4eb620",
  "cardType" : "mastercard"
 }
 
@@ -178,7 +196,7 @@ DELETE http://localhost:3000/api/card
 Content-Type: application/json
 
 {
- "cardRefId" : "681f5afc7d9fde76864f0ca3"
+ "cardRefId" : "681ee1161d2519cedc4eb620"
 }
 
 ### get messages for a customer 
