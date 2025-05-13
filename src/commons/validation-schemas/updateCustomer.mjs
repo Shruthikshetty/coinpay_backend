@@ -67,3 +67,24 @@ export const updateCustomerValidationReq = {
     },
   },
 };
+
+//this is used to validate requwst body of update phone number
+export const updatePhoneNumberValidationReq = {
+  customerId: {
+    notEmpty: { errorMessage: 'customerId is required' },
+    isString: {
+      errorMessage: 'Customer id Should be string ',
+    },
+  },
+  phoneNumber: {
+    notEmpty: { errorMessage: 'phoneNumber is required' },
+    isString: {
+      errorMessage: 'phoneNumber Should be string ',
+    },
+    isLength: {
+      options: { min: 10, max: 10 },
+      errorMessage: 'PhoneNumber must be exactly 10 digits',
+    },
+    trim: true,
+  },
+};

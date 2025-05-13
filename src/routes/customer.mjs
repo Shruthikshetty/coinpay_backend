@@ -6,6 +6,7 @@ import {
   getCustomerById,
   updateCustomerProfileImage,
   updateCustomerDetails,
+  updateCustomerPhoneNumber,
 } from '../controllers/customer.mjs';
 import { checkSchema } from 'express-validator';
 import { validateAddCustomerReq } from '../commons/validation-schemas/validateAddCustomer.mjs';
@@ -13,6 +14,7 @@ import { validateRequest } from '../commons/utils/getValidatedData.mjs';
 import {
   updateProfileImgValidationReq,
   updateCustomerValidationReq,
+  updatePhoneNumberValidationReq,
 } from '../commons/validation-schemas/updateCustomer.mjs';
 
 //initialize customer
@@ -42,6 +44,13 @@ router.patch(
   checkSchema(updateCustomerValidationReq),
   validateRequest,
   updateCustomerDetails
+);
+// route used to update customer phone number
+router.put(
+  '/phone-number',
+  checkSchema(updatePhoneNumberValidationReq),
+  validateRequest,
+  updateCustomerPhoneNumber
 );
 
 export default router;
