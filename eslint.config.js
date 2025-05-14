@@ -23,3 +23,10 @@ export default defineConfig([
     },
   },
 ]);
+
+module.exports = {
+  // other configurations
+  env: {
+    jest: true, // Add Jest environment to recognize Jest globals
+  },
+}
