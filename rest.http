@@ -181,6 +181,11 @@ Content-Type: application/json
  "accountRefId" : "681ee1161d2519cedc4eb620"
 }
 
+### get cards all  belonging to a customer 
+GET http://localhost:3000/api/card/682441abb623e497f319085c
+Content-Type: application/json
+
+
 ### add a card to a customer account
 POST http://localhost:3000/api/card/add
 Content-Type: application/json

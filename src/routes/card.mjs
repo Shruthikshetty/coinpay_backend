@@ -4,6 +4,7 @@ import {
   getCardsByAccount,
   addcard,
   deleteCardById,
+  getCardsByCustomer,
 } from '../controllers/cards.mjs';
 import { checkSchema } from 'express-validator';
 import { validateRequest } from '../commons/utils/getValidatedData.mjs';
@@ -29,5 +30,7 @@ router.delete(
   validateRequest,
   deleteCardById
 );
+// get all cards relate to a customer
+router.get('/:customerRefId', getCardsByCustomer);
 
 export default router;
