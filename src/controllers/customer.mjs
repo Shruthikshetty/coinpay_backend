@@ -74,7 +74,7 @@ export const updateCustomerProfileImage = async (req, res) => {
 
 //this endpoint is used to update customer profile partially
 export const updateCustomerDetails = async (req, res) => {
-  const { customerId, name, email, addres, country, city, pinCode, dob } =
+  const { customerId, name, email, address, country, city, pinCode, dob } =
     req.validatedData;
   try {
     // get customerId from the request body
@@ -89,7 +89,7 @@ export const updateCustomerDetails = async (req, res) => {
       {
         name: name ?? customer.name,
         email: email ?? customer.email,
-        addres: addres ?? customer.addres,
+        address: address ?? customer.address,
         country: country ?? customer.country,
         city: city ?? customer.city,
         pinCode: pinCode ?? customer.pinCode,

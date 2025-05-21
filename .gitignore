@@ -3,3 +3,5 @@ node_modules
 passwords.txt
 planning.txt
 logs
+coverage
+.vscode

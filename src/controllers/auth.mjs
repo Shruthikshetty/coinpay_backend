@@ -71,7 +71,7 @@ export const updateCustomerAuth = async (req, res) => {
 export const validatePin = async (req, res) => {
   const { customerRefId, pin } = req.validatedData;
   try {
-    // validate the pin will throw error if not valied
+    // validate the pin will throw error if not valid
     await validateAuthField(customerRefId, 'pin', pin);
     res
       .status(200)
@@ -85,7 +85,7 @@ export const validatePin = async (req, res) => {
 export const validatePassword = async (req, res) => {
   const { customerRefId, password } = req.validatedData;
   try {
-    // validate the password will throw error if not valied
+    // validate the password will throw error if not valid
     await validateAuthField(customerRefId, 'password', password);
     res
       .status(200)

@@ -34,7 +34,7 @@ export const getTransactions = async (req, res) => {
           .select('-customer -account');
 
     if (!transactions || transactions.length === 0) {
-      return res.status(404).json({ message: 'transctions not found' });
+      return res.status(404).json({ message: 'transitions not found' });
     }
     res.status(200).json(transactions);
   } catch (error) {

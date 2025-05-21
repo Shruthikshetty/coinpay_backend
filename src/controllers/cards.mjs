@@ -25,6 +25,48 @@ export const getCardsByAccount = async (req, res) => {
     handle500Error(res, error);
   }
 };
+// Controller to get all cards by customer ref id
+export const getCardsByCustomer = async (req, res) => {
+  const { customerRefId } = req.params;
+
+  if (!customerRefId) {
+    return res.status(400).json({ message: 'customerRefId is required' });
+  }
+
+  try {
+    // Find all accounts linked to the customer
+    const accounts = await Account.find({ customer: customerRefId })
+      .select('_id')
+      .lean();
+
+    // If no accounts found for the customer
+    if (!accounts || accounts.length === 0) {
+      return res
+        .status(404)
+        .json({ message: 'No accounts found for this customer' });
+    }
+
+    // Extract account IDs
+    const accountIds = accounts.map((acc) => acc._id);
+
+    // Find all cards linked to these accounts
+    const cards = await Card.find({ account: { $in: accountIds } })
+      .populate('account')
+      .lean();
+
+    // If no cards found
+    if (!cards || cards.length === 0) {
+      return res
+        .status(404)
+        .json({ message: 'No cards found for this customer' });
+    }
+
+    // Send the response
+    res.status(200).json(cards);
+  } catch (error) {
+    handle500Error(res, error);
+  }
+};
 
 // controller to add a card to the account
 export const addcard = async (req, res) => {

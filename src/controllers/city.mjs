@@ -54,7 +54,7 @@ export const getCitiesByCountry = async (req, res) => {
     const cities = await City.find({ country: countryRefId })
       .lean()
       .select('-country'); // exclude country ref
-    // incase no ceties found
+    // incase no cities found
     if (!cities || cities.length === 0) {
       return res
         .status(404)

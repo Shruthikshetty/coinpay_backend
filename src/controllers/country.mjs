@@ -10,7 +10,7 @@ export const getCountries = async (_, res) => {
     if (!countries) {
       return res.status(404).json({ message: 'countries not found' });
     }
-    // retrun the countries list
+    // return the countries list
     res.status(200).json(countries);
   } catch (error) {
     handle500Error(res, error);

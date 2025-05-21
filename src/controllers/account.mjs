@@ -8,7 +8,7 @@ import {
 import { findCustomerOrThrow } from '../commons/utils/findCustomer.mjs';
 import { updateAccountBalanceById } from '../commons/utils/updateBalanceByAccountId.mjs';
 
-//this is used to get all the acounts related to a customer
+//this is used to get all the accounts related to a customer
 export const getAccounts = async (req, res) => {
   const { customerRefId } = req.validatedData;
   try {
