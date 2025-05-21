@@ -6,11 +6,11 @@ import {
 } from '../commons/utils/otpService.mjs';
 import { handle500Error } from '../commons/utils/handleError.mjs';
 
-// this is used to generate and send a otp to user phonenumber
-// NOTE we only simulate it sending but no otp is sent to user rather we jsut return it in the response
+// this is used to generate and send a otp to user phone number
+// NOTE we only simulate it sending but no otp is sent to user rather we just return it in the response
 export const sendOtp = async (req, res) => {
   try {
-    // get phone nmbber from validated request body
+    // get phone number from validated request body
     const { phoneNumber } = req.validatedData;
 
     // check if a otp already exist
@@ -25,7 +25,7 @@ export const sendOtp = async (req, res) => {
 
     // store the otp in redis
     await setOTP(phoneNumber, otp);
-    // retrun the otp
+    // return the otp
     // NOTE : (since we are not sending any otp to phone)
     res.status(200).json({ message: 'OTP sent', otp });
   } catch (error) {
@@ -46,7 +46,7 @@ export const confirmOtp = async (req, res) => {
         success: false,
       });
     }
-    // retrun the success
+    // return the success
     res
       .status(200)
       .json({ message: 'OTP verified successfully', success: true });

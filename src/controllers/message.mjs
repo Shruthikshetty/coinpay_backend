@@ -13,7 +13,7 @@ export const getMessages = async (req, res) => {
   const { customerRefId, start = 0, limit = 10 } = req.validatedData;
 
   try {
-    //get the nmessage from the db
+    //get the message from the db
     // by default fetch only recent 10 messages
     const messages = await Message.find({ customer: customerRefId })
       .sort({ createdAt: -1 }) // get latest messages first

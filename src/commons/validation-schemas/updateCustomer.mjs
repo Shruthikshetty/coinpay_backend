@@ -1,4 +1,4 @@
-// to validate the req body of update profilr image
+// to validate the req body of update profile image
 export const updateProfileImgValidationReq = {
   customerId: {
     notEmpty: { errorMessage: 'customerId is required' },
@@ -14,7 +14,7 @@ export const updateProfileImgValidationReq = {
   },
 };
 
-// this is used to vlidate the req body of update customer details
+// this is used to validate the req body of update customer details
 export const updateCustomerValidationReq = {
   customerId: {
     notEmpty: { errorMessage: 'customerId is required' },
@@ -34,7 +34,7 @@ export const updateCustomerValidationReq = {
       errorMessage: 'Email Should be valid email',
     },
   },
-  addres: {
+  address: {
     optional: true,
     isString: {
       errorMessage: 'Address Should be string ',
@@ -68,7 +68,7 @@ export const updateCustomerValidationReq = {
   },
 };
 
-//this is used to validate requwst body of update phone number
+//this is used to validate request body of update phone number
 export const updatePhoneNumberValidationReq = {
   customerId: {
     notEmpty: { errorMessage: 'customerId is required' },
