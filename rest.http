@@ -129,13 +129,13 @@ POST http://localhost:3000/api/city
 Content-Type: application/json
 
 {
-  "city": "San Francisco",
-  "cityCode": "SFO",
-  "countryRefId": "681e17504482711383337a50"
+  "city": "Vancouver",
+  "cityCode": "YVR",
+  "countryRefId": "681e17e14482711383337a52"
 }
 
 ### get city by country
-GET http://localhost:3000/api/city/country/681e17504482711383337a50
+GET http://localhost:3000/api/city/country/681e17e14482711383337a52
 
 
 ### all accounts for a user 
