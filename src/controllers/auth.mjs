@@ -86,7 +86,6 @@ export const validatePin = async (req, res) => {
 export const validatePassword = async (req, res) => {
   const { customerId, password } = req.validatedData;
   try {
-    console.log(customerId);
     // find the customer ref id
     const customer = await Customer.findOne({ customerId });
     if (!customer) {
