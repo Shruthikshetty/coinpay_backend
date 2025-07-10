@@ -4,6 +4,7 @@ import { Auth } from '../modals/Auth.mjs';
 import bcrypt from 'bcrypt';
 import { findCustomerOrThrow } from '../commons/utils/findCustomer.mjs';
 import { validateAuthField } from '../commons/utils/validateAuthFeild.mjs';
+import { Customer } from '../modals/Customer.mjs';
 
 // used to add a authorization for a user
 export const addAuthforCustomer = async (req, res) => {
@@ -83,10 +84,16 @@ export const validatePin = async (req, res) => {
 
 // this is used to validate the password
 export const validatePassword = async (req, res) => {
-  const { customerRefId, password } = req.validatedData;
+  const { customerId, password } = req.validatedData;
   try {
+    console.log(customerId);
+    // find the customer ref id
+    const customer = await Customer.findOne({ customerId });
+    if (!customer) {
+      return res.status(404).json({ message: 'Customer not found or invalid' });
+    }
     // validate the password will throw error if not valid
-    await validateAuthField(customerRefId, 'password', password);
+    await validateAuthField(customer._id, 'password', password);
     res
       .status(200)
       .json({ message: 'Authorized successfully', token: 'AUTHORIZED' });

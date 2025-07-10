@@ -1,7 +1,7 @@
 //this validates the request body for validating password
 
 export const validatedPasswordReq = {
-  customerRefId: {
+  customerId: {
     notEmpty: { errorMessage: 'customer Id is required' },
     isString: { errorMessage: 'customer must be string' },
   },

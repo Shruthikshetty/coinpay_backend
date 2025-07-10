@@ -103,7 +103,7 @@ POST http://localhost:3000/api/auth/validate/password
 Content-Type: application/json
 
 {
-  "customerRefId": "681da127828b24fe55801158",
+  "customerId": "CUST123462",
   "password":"anjaliking"
 }
 
